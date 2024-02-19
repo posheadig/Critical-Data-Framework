@@ -96,6 +96,14 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
     graph deploy --node http://localhost:8020 --ipfs http://localhost:5001 graphname
     ```
 
+### Creating Graph in HardHat
+
+14. **Create Graph**
+   Create graph by running:
+     ```bash
+     npx hardhat run scripts/createGraph.js --network localhost
+     ```
+
 ### Querying the Subgraph
 
 - Perform local queries by replacing `graphname` with the actual name of your deployed subgraph. Example query URL:
@@ -107,7 +115,7 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
 
 - **Important**: When shutting down the graph-node, remember to delete the latest generated data at `docker/data`. 
 
-14. **Remove the Subgraph**
+15. **Remove the Subgraph**
     ```bash
     graph remove --node http://localhost:8020 graphname
     ```
