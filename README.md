@@ -105,7 +105,12 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
 
 ### Cleanup
 
-- **Important**: When shutting down the graph-node, remember to delete the latest generated data at `docker/data`. Then graph remove --node http://localhost:8020 graphname
+- **Important**: When shutting down the graph-node, remember to delete the latest generated data at `docker/data`. 
+
+14. **Remove the Subgraph**
+    ```bash
+    graph remove --node http://localhost:8020 graphname
+    ```
 
 ### Completion
 
