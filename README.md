@@ -111,7 +111,3 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
     ```bash
     graph remove --node http://localhost:8020 graphname
     ```
-
-### Completion
-
-You have now successfully set up and deployed your project!
