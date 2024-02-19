@@ -13,7 +13,6 @@ async function main() {
   const factory = await Factory.deploy(owner.address);
   console.log('factory', factory.address);
 
-  // Create WETH
   const Weth = new ContractFactory(WETH9.abi, WETH9.bytecode, owner);
   const weth = await Weth.deploy();
   console.log('weth', weth.address);
@@ -22,9 +21,6 @@ async function main() {
   const router = await Router.deploy(factory.address, weth.address);
   console.log('router', router.address);
 }
-
-// Run the script
-// npx hardhat run --network localhost scripts/01_deployContracts.js
 
 main()
   .then(() => process.exit(0))

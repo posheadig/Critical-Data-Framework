@@ -2,7 +2,6 @@ const hre = require('hardhat');
 const { Contract, ContractFactory, utils, BigNumber, constants } = require("ethers")
 const fs = require('fs');
 
-
 async function main() {
 
  console.log('Deploying ovTokenBase contract...');
