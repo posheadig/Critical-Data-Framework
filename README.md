@@ -100,7 +100,7 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
 
 - Perform local queries by replacing `graphname` with the actual name of your deployed subgraph. Example query URL:
   ```
-  http://localhost:8000/subgraphs/name/graphname/graphql?query=+query+MyQuery+{...}
+  http://localhost:8000/subgraphs/name/graphname/graphql?query=+query+MyQuery+%7B%0A+++++tokens%28first%3A+500%29+%7B%0A+++++++++id%0A+++++++++name%0A+++++++++address%0A+++++%7D%0A+++++pairs%28first%3A+500%29+%7B%0A+++++++++id%0A+++++++++token0%0A+++++++++token1%0A+++++++++address%0A+++++++++token1Name%0A+++++++++token0Name%0A+++++++++reserve1%0A+++++++++reserve0%0A+++++%7D%0A+%7D
   ```
 
 ### Cleanup
