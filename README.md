@@ -119,3 +119,9 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
     ```bash
     graph remove --node http://localhost:8020 graphname
     ```
+
+### Viewing Data via D3 Graph
+
+14. **open local graph.html file**
+   Update any WETH address in webclient/main.js 
+   Update fetch method (local json or HardHat node)
