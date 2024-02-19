@@ -1,0 +1,99 @@
+specVersion: 0.0.4
+description: Subgraph for ovTokenBase and ovPairBase
+repository: https://github.com/posheadig/names>
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ovTokenBase
+    network: hardhat
+    source:
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+      abi: ovTokenBase
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Token
+      abis:
+        - name: ovTokenBase
+          file: ovTokenBase/abis/ovTokenBase.json
+        - name: NameAsSymbolERC20
+          file: ovTokenBase/abis/NameAsSymbolERC20.json
+        - name: Factory
+          file: ovTokenBase/abis/Factory.json
+        - name: UniswapV2Pair
+          file: ovTokenBase/abis/UniswapV2Pair.json
+      eventHandlers:
+        - event: TokenCreated(indexed address,indexed address)
+          handler: handleTokenCreated
+      file: ovTokenBase/ovTokenBase.wasm
+  - kind: ethereum/contract
+    name: ovPoolBase
+    network: hardhat
+    source:
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+      abi: ovPoolBase
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: ovPoolBase
+          file: ovPoolBase/abis/ovPoolBase.json
+        - name: NameAsSymbolERC20
+          file: ovPoolBase/abis/NameAsSymbolERC20.json
+        - name: UniswapV2Pair
+          file: ovPoolBase/abis/UniswapV2Pair.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address)
+          handler: handlePairCreated
+      file: ovTokenBase/ovTokenBase.wasm
+  - kind: ethereum/contract
+    name: Factory
+    network: hardhat
+    source:
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      abi: Factory
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Pair
+      abis:
+        - name: Factory
+          file: Factory/abis/Factory.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: dummyEventHandler
+      file: ovTokenBase/ovTokenBase.wasm
+templates:
+  - kind: ethereum/contract
+    name: PairTemplate
+    network: hardhat
+    source:
+      abi: UniswapV2Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Pair
+        - SwapTransaction
+      abis:
+        - name: UniswapV2Pair
+          file: PairTemplate/abis/UniswapV2Pair.json
+      eventHandlers:
+        - event: Swap(indexed address,uint256,uint256,uint256,uint256,indexed address)
+          handler: handleSwap
+        - event: Sync(uint112,uint112)
+          handler: handleSync
+      file: templates/PairTemplate/PairTemplate.wasm
