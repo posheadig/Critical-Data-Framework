@@ -26,7 +26,7 @@ async function fetchAllPairsHardHat(ETH_ADDRESS) {
             }`;
 
         try {
-            const response = await fetch('http://localhost:8000/subgraphs/name/first/', {
+            const response = await fetch('http://localhost:8000/subgraphs/name/third/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
