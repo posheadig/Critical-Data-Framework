@@ -8,7 +8,7 @@ contract DataArb {
     IUniswapV2Router02 public immutable uniswapV2Router;
 
     constructor() {
-        uniswapV2Router = IUniswapV2Router02(0xC532a74256D3Db42D0Bf7a0400fEFDbad7694008);
+        uniswapV2Router = IUniswapV2Router02(0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0);
     }
 
     // This function is payable as it may need to send ETH for the first swap

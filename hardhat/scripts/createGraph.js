@@ -402,10 +402,10 @@ async function linkTokens(createLContract, tokenA, tokenB, deadline) {
     const tx = await createLContract.buyTokensAsLiquidity(
         tokenA,
         tokenB,
-        ethers.utils.parseUnits("1", 18),
-        ethers.utils.parseUnits("1", 18),
+        ethers.utils.parseUnits("0", 18),
+        ethers.utils.parseUnits("0", 18),
         deadline,
-        { value: ethers.utils.parseUnits("0.01", 18), gasLimit: 5000000 }
+        { value: ethers.utils.parseUnits("0.001", 18), gasLimit: 5000000 }
     );
     await tx.wait();
 }

@@ -11,7 +11,7 @@ contract ovSwapBase {
     event TokensSold(address indexed seller, address indexed tokenAddress, uint256 amountIn, uint256 ethReceived);
 
     constructor() {
-        uniswapV2Router = IUniswapV2Router02(0xC532a74256D3Db42D0Bf7a0400fEFDbad7694008);
+        uniswapV2Router = IUniswapV2Router02(0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0);
     }
 
     function buyExactTokenWithETH(address tokenAddress, uint256 amountOutMin, uint256 deadline) external payable {
