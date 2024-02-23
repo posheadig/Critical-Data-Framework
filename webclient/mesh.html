@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Data Visualization</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+// Initialize scene, camera, and renderer
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Add lighting
+const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+scene.add(ambientLight);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+directionalLight.position.set(1, 1, 1);
+scene.add(directionalLight);
+
+// Initialize OrbitControls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.25;
+controls.screenSpacePanning = false;
+controls.maxPolarAngle = Math.PI / 2;
+
+// Function to create more 3D and interesting terrain from data
+function createTerrain(data) {
+    const tokens = data.tokens.tokens; // Adjusted path to tokens
+    const pairs = data.tokens.pairs; // Adjusted path to pairs
+
+    // Assuming 'tokens' array can be mapped to a square grid for simplicity
+    const size = Math.ceil(Math.sqrt(tokens.length));
+    const segments = size * 4;
+    const geometry = new THREE.PlaneGeometry(100, 100, segments, segments);
+    const positionAttribute = geometry.getAttribute('position');
+    const elevations = pairs.map(pair => Math.log10(parseFloat(pair.totalValue) + 1) * 10);
+    console.log(elevations);
+
+    for (let i = 0; i < positionAttribute.count; i++) {
+        const xi = i % (segments + 1);
+        const yi = Math.floor(i / (segments + 1));
+        const pairIndex = yi * size + xi % size; // Wrap around the pairs array
+        const elevation = elevations[pairIndex % elevations.length]; // Use modulo to avoid out-of-bounds
+        positionAttribute.setZ(i, elevation);
+    }
+
+
+    geometry.computeVertexNormals(); // Recompute normals
+
+    const material = new THREE.MeshStandardMaterial({
+        color: 0x156289,
+        metalness: 0.5,
+        roughness: 0.1,
+       // flatShading: true,
+    });
+    const terrain = new THREE.Mesh(geometry, material);
+    terrain.rotation.x = -Math.PI / 2; // Rotate the mesh to lay flat
+    scene.add(terrain);
+
+    // Adjust camera and controls to see the terrain
+    camera.position.set(0, 200, 200);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    controls.update();
+
+        // Find the highest-valued points
+        const highestValues = pairs.sort((a, b) => b.totalValue - a.totalValue).slice(0, 10); // Get top 5
+// Create labels for the highest values
+highestValues.forEach((pair, index) => {
+        const elevation = Math.log10(parseFloat(token.totalValue) + 1) * 11000;
+        const sprite = makeTextSprite(token.name, { fontsize: 64 });
+        // Calculate the position in the terrain mesh
+        const xi = index % size; // You need to calculate the actual position based on your terrain
+        const yi = Math.floor(index / size);
+        sprite.position.set(xi - size / 2, elevation, yi - size / 2);
+        sprite.name = token.name; // Explicitly set the name property if needed
+        scene.add(sprite);
+    });
+}
+
+function makeTextSprite(message, parameters) {
+    if (parameters === undefined) parameters = {};
+    const fontface = parameters.fontface || 'Helvetica';
+    const fontsize = parameters.fontsize || 70;
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    const textWidth = context.measureText(message).width;
+    canvas.width = textWidth;
+    canvas.height = fontsize * 2; // Ensure canvas is large enough to fit the text
+    context.font = fontsize + "px " + fontface; // Reapply font settings after resizing canvas
+    context.fillStyle = 'rgba(255, 255, 255, 1.0)';
+    context.fillText(message, 0, fontsize); // Ensure text is positioned correctly
+
+    
+    const texture = new THREE.Texture(canvas);
+    texture.needsUpdate = true;
+    
+    const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+    const sprite = new THREE.Sprite(spriteMaterial);
+    return sprite;
+}
+
+// Fetch and process JSON data
+fetch('sampleData2.json') // Adjust this path to your JSON file
+    .then(response => response.json())
+    .then(jsonData => {
+        createTerrain(jsonData.data); // Now correctly accessing the nested data
+    });
+
+// Render loop with controls update
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update(); // Needed for damping
+    renderer.render(scene, camera);
+}
+
+animate();
+
+
+    </script>
+</body>
+</html>

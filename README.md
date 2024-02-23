@@ -1,3 +1,14 @@
+# Research Critical Data Framework Documentation
+
+### Introduction to the Research Critical Data Framework
+This framework delves into the study of digital and data cultures through the exploitation of gaps and inefficiencies, akin to arbitrage in financial markets. Through the lens of market dynamics, the tokenization of datasets into entities and links simulate a financial market. This framework transforms a conventional dataset, containing various entities and their interconnections, into a complex network of token/currency and token/token liquidity pools. Here, each 'node' or entity's value is determined by its price in native currency, thereby introducing a market perspective.
+The inclusion of an arbitrage mechanism, which dynamically adjusts for price discrepancies across the dataset, reflects the self-correcting nature of markets. This mechanism not only provides a deeper understanding of market dynamics but also serves as a metaphor for the interconnectedness and fluidity of information in the digital age.
+The arbitrage mechanism ensures that any increase in a node's value, which leads to price discrepancies within the dataset, is automatically "leveled out" through arbitrage, mirroring the self-correcting nature of capitalism. At its core, the framework employs the concept of arbitrage as both a metaphorical lens and a practical tool to navigate through and unveil the opaque practices of data commodification.
+Arbitrage, in this context, symbolizes the act of exploiting discrepancies within data economies, serving as a critical lens to interrogate and deconstruct the hidden dynamics of power, surveillance, and the commodification of information, urging a reconsideration of ethical standards and democratic access in the digital age. This mechanism's dynamic nature allows for a novel form of interaction with Large Language Models (LLMs), where changes within the dataset can lead to real-time fine-tuning of the LLM's responses.
+
+### Key Features and Implementation
+This framework employs smart contract technology to tokenize datasets, creating a simulated market environment that reflects the complexities of real-world financial systems. Here's how it is implemented:
+
 ### Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -5,6 +16,9 @@ Before you begin, ensure you have the following installed:
 - Node.js and npm
 - HardHat
 - The Graph CLI
+
+## Setup and Deployment
+The setup involves initializing a Graph-Node environment, configuring HardHat for smart contract deployment, and deploying a subgraph to track the interactions within your dataset-turned-market.
 
 ### Initializing Graph-Node
 
@@ -120,8 +134,25 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
     graph remove --node http://localhost:8020 graphname
     ```
 
-### Viewing Data via D3 Graph
+### Viewing Data via D3 Graph or D3 Mesh
+![Alt text](doc/mesh.png "example of visualization as a mesh plane")
 
 14. **open local graph.html file**
    Update any WETH address in webclient/main.js 
    Update fetch method (local json or HardHat node)
+
+
+## Demonstration Videos
+###Demo 1: Node Weight Change Impact
+[![Video Title](https://youtu.be/w1ACORJNVp4)](https://youtu.be/w1ACORJNVp4)
+This demo showcases how changing the weight of a node affects the response of a Large Language Model (LLM). It provides a practical example of the framework's critique on data value and representation.
+
+
+###Demo 2: Weight Discrepancies and Arbitrage Opportunity
+[![Video Title](https://youtu.be/65zHikzmyQs)](https://youtu.be/65zHikzmyQs)
+The second demo illustrates the effect of weight discrepancies and arbitrage opportunities on shifting the response of the LLM, highlighting the framework's use of arbitrage as a critical lens.
+
+
+###Demo 3: Large Scale Application
+[![Video Title](https://youtu.be/v3d7eWChAQ8)](https://youtu.be/v3d7eWChAQ8)
+Demonstrating the framework's concepts on a larger scale, this video combines the effects of node weight changes and arbitrage opportunities, showcasing the extensive application of the Critical Data Framework.
