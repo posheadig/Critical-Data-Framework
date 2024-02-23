@@ -147,16 +147,20 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
 
 ## Demonstration Videos
 
+###Demo 1: Node Weight Change Impact 
+
 [![Demo 1: Node Weight Change Impact](https://img.youtube.com/vi/w1ACORJNVp4/0.jpg)](https://www.youtube.com/watch?v=w1ACORJNVp4)
 
 This demo showcases how changing the weight of a node affects the response of a Large Language Model (LLM). It provides a practical example of the framework's critique on data value and representation.
+
+###Demo 2: Weight Discrepancies and Arbitrage Opportunity
 
 [![Demo 2: Weight Discrepancies and Arbitrage Opportunity](https://img.youtube.com/vi/65zHikzmyQs/0.jpg)](https://www.youtube.com/watch?v=65zHikzmyQs)
 
 The second demo illustrates the effect of weight discrepancies and arbitrage opportunities on shifting the response of the LLM, highlighting the framework's use of arbitrage as a critical lens.
 
-### Demo 3: Large Scale Application
+### Demo 3: Large Scale Dataset
 
 [![Video Title](https://img.youtube.com/vi/v3d7eWChAQ8/0.jpg)](https://www.youtube.com/watch?v=v3d7eWChAQ8)
 
-Demonstrating the framework's concepts on a larger scale, this video combines the effects of node weight changes and arbitrage opportunities, showcasing the extensive application of the Critical Data Framework.
+Demonstrating the framework's concepts on a larger scale using a Kaggle NLP training dataset, this video combines the effects of node weight changes and arbitrage opportunities, showcasing the extensive application of the Critical Data Framework.
