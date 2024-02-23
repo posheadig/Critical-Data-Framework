@@ -147,13 +147,13 @@ To deploy your subgraph to the local Graph-Node, follow these steps:
 
 ## Demonstration Videos
 
-###Demo 1: Node Weight Change Impact 
+### Demo 1: Node Weight Change Impact 
 
 [![Demo 1: Node Weight Change Impact](https://img.youtube.com/vi/w1ACORJNVp4/0.jpg)](https://www.youtube.com/watch?v=w1ACORJNVp4)
 
 This demo showcases how changing the weight of a node affects the response of a Large Language Model (LLM). It provides a practical example of the framework's critique on data value and representation.
 
-###Demo 2: Weight Discrepancies and Arbitrage Opportunity
+### Demo 2: Weight Discrepancies and Arbitrage Opportunity
 
 [![Demo 2: Weight Discrepancies and Arbitrage Opportunity](https://img.youtube.com/vi/65zHikzmyQs/0.jpg)](https://www.youtube.com/watch?v=65zHikzmyQs)
 
